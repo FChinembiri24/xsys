@@ -13,8 +13,7 @@ class Logs extends StatefulWidget {
 }
 
 class _LogsState extends State<Logs> {
-  @override
-//Todo
+  //Todo
 int page=2;
  changePage(int num)
  {
@@ -33,7 +32,7 @@ int page=2;
   return Scaffold(
   appBar: AppBar(title:const Text("Logs")),
   body:   (page==2)?
-    Details():(page==1)?VehicleRegistry():Inventory(),
+    const Details():(page==1)?const VehicleRegistry():const Inventory(),
   drawer: Drawer(
   // Add a ListView to the drawer. This ensures the user can scroll
   // through the options in the drawer if there isn't enough vertical
@@ -56,7 +55,7 @@ int page=2;
   // Update the state of the app
   // ...
   // Then close the drawer
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> Inventory()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> const Inventory()));
   },
   ),
   ListTile(
@@ -75,7 +74,7 @@ int page=2;
         // Update the state of the app
         // ...
         // Then close the drawer
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> Details()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> const Details()));
       },
 
     ),

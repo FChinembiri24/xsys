@@ -11,7 +11,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    String hint = "Email or Username";
+    String hint = "Client or Work ID";
     String hint2 = "password";
 
     return Scaffold(

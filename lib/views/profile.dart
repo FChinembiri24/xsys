@@ -1,7 +1,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:xsys/dashboard.dart';
 bool editing= true;
 
 class Profile extends StatefulWidget {
@@ -20,7 +19,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: const Text("Profile"),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -41,7 +40,7 @@ class _ProfileState extends State<Profile> {
                         child: Center(
                           child: Container(
                             //margin: EdgeInsets.all(1.0),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                             // color: Colors.white70,
                                 shape: BoxShape.circle
                             ),
@@ -58,7 +57,7 @@ class _ProfileState extends State<Profile> {
                         ),
       ),Container(      color:Colors.blueGrey[600],
                         width:360,
-                        child: IconButton(onPressed: (){}, icon:Icon(Icons.camera_alt) ))
+                        child: IconButton(onPressed: (){}, icon:const Icon(Icons.camera_alt) ))
                   ],
                 ),
               ),
@@ -96,7 +95,7 @@ class _ProfileState extends State<Profile> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: <Widget>[
-                              Text("Name",style: TextStyle(
+                              const Text("Name",style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0)),
@@ -122,9 +121,9 @@ class _ProfileState extends State<Profile> {
                                       borderRadius: BorderRadius.circular(8),
                                       borderSide: const BorderSide(color: Colors.white10)),
                                   hintStyle: const TextStyle(color: Colors.blueGrey),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: const UnderlineInputBorder(
 
-                                      borderSide: const BorderSide(color: Colors.white10))),
+                                      borderSide: BorderSide(color: Colors.white10))),
                             ),
                               const SizedBox(
                                 height: 5.0,
@@ -158,7 +157,7 @@ class _ProfileState extends State<Profile> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: <Widget>[
-                              Text(
+                              const Text(
                                 "Email",
                                 style: TextStyle(
                                     color: Colors.white,
@@ -187,9 +186,9 @@ class _ProfileState extends State<Profile> {
                                         borderRadius: BorderRadius.circular(8),
                                         borderSide: const BorderSide(color: Colors.white10)),
                                     hintStyle: const TextStyle(color: Colors.blueGrey),
-                                    focusedBorder: UnderlineInputBorder(
+                                    focusedBorder: const UnderlineInputBorder(
 
-                                        borderSide: const BorderSide(color: Colors.white10))),
+                                        borderSide: BorderSide(color: Colors.white10))),
                               ),
                               const SizedBox(
                                 height: 5.0,
@@ -222,7 +221,7 @@ class _ProfileState extends State<Profile> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: <Widget>[
-                              Text(
+                              const Text(
                                 "Phone Number",
                                 style: TextStyle(
                                     color: Colors.white,
@@ -252,9 +251,9 @@ class _ProfileState extends State<Profile> {
                                         borderRadius: BorderRadius.circular(8),
                                         borderSide: const BorderSide(color: Colors.white10)),
                                     hintStyle: const TextStyle(color: Colors.blueGrey),
-                                    focusedBorder: UnderlineInputBorder(
+                                    focusedBorder: const UnderlineInputBorder(
 
-                                        borderSide: const BorderSide(color: Colors.white10))),
+                                        borderSide: BorderSide(color: Colors.white10))),
                               ),
                               const SizedBox(
                                 height: 5.0,
@@ -288,7 +287,7 @@ class _ProfileState extends State<Profile> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: <Widget>[
-                            Text(
+                            const Text(
                             "Address",
                             style: TextStyle(
                                 color: Colors.white,
@@ -300,7 +299,7 @@ class _ProfileState extends State<Profile> {
                                 height: 10.0,
                               ),
                               editing?const Text(
-                                "123 streetroad, Karigamombe ,\n Harare",
+                                "123 street name, Karigamombe ,\n Harare",
                                 style: TextStyle(
                                     color: Colors.amberAccent,
                                     fontWeight: FontWeight.bold,
@@ -318,9 +317,9 @@ class _ProfileState extends State<Profile> {
                                         borderRadius: BorderRadius.circular(8),
                                         borderSide: const BorderSide(color: Colors.white10)),
                                     hintStyle: const TextStyle(color: Colors.blueGrey),
-                                    focusedBorder: UnderlineInputBorder(
+                                    focusedBorder: const UnderlineInputBorder(
 
-                                        borderSide: const BorderSide(color: Colors.white10))),
+                                        borderSide: BorderSide(color: Colors.white10))),
                               ),
                               const SizedBox(
                                 height: 5.0,
@@ -352,8 +351,8 @@ class _ProfileState extends State<Profile> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
-                            children: <Widget>[
-                              const Text(
+                            children: const <Widget>[
+                              Text(
                           "Services offered",
                             style: TextStyle(
                                 color: Colors.white,
@@ -361,10 +360,10 @@ class _ProfileState extends State<Profile> {
                                 fontSize: 20.0
                             ),
                           ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 10.0,
                               ),
-                              const Text(
+                              Text(
                                 "Company security, Inventory Management",
                                 style: TextStyle(
                                     color: Colors.blueGrey,
@@ -373,7 +372,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                               ),
 
-                              const Text(
+                              Text(
                                 "",
                                 style: TextStyle(
                                     color: Colors.white,
