@@ -2,15 +2,20 @@
 class Assets {
   Assets._();
 
+  static const String assetsBLUE = 'assets/BLUE.jpg';
   static const String assetsCheckIn = 'assets/checkIn.png';
   static const String assetsDetails = 'assets/details.png';
   static const String assetsDetails1 = 'assets/Details1.png';
+  static const String assetsDownload = 'assets/download.png';
+  static const String assetsImages = 'assets/images.png';
+  static const String assetsKcmp5r = 'assets/kcmp5r.jpg';
   static const String assetsLogo = 'assets/Logo.png';
   static const String assetsLogs = 'assets/logs.png';
   static const String assetsNotify = 'assets/notify.png';
+  static const String assetsProfile = 'assets/profile.jpg';
   static const String assetsProfile1 = 'assets/profile1.png';
   static const String assetsSchedule = 'assets/schedule.png';
   static const String assetsSchedule2 = 'assets/schedule2.png';
-
+  static const String xsysAssetsBLUE = 'assets/BLUE.png';
 
 }

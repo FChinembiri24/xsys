@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xsys/dashboard.dart';
+import 'package:xsys/views/ProfileDetails.dart';
 import 'package:xsys/views/checkIn.dart';
 import 'package:xsys/views/log.dart';
 import 'package:xsys/views/profile.dart';
@@ -246,46 +247,51 @@ class _HomeState extends State<Home> {
   ),
   ],
   ),
-    SizedBox(
-      width:320.0,
-      height: 160.0,
-      child: Card(
+    GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> GDetails()));
+      },
+      child: SizedBox(
+        width:320.0,
+        height: 160.0,
+        child: Card(
 
-        color: Colors.amberAccent,
-        elevation: 2.0,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0)
-        ),
-        child:Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: <Widget>[
-                  Image.asset("assets/Details1.png",width: 64.0,),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  const Text(
-                    "Guard Details",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0
+          color: Colors.amberAccent,
+          elevation: 2.0,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0)
+          ),
+          child:Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: <Widget>[
+                    Image.asset("assets/Details1.png",width: 64.0,),
+                    const SizedBox(
+                      height: 10.0,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  const Text(
-                    "",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w100
+                    const Text(
+                      "Guard Details",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0
+                      ),
                     ),
-                  )
-                ],
-              ),
-            )
+                    const SizedBox(
+                      height: 5.0,
+                    ),
+                    const Text(
+                      "",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w100
+                      ),
+                    )
+                  ],
+                ),
+              )
+          ),
         ),
       ),
     ),
