@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xsys/views/blueCheckIn.dart';
 
 class CheckIn extends StatefulWidget {
   const CheckIn({Key? key}) : super(key: key);
@@ -27,7 +28,10 @@ class _CheckInState extends State<CheckIn> {
 
                   //TODO
 
-                  child: ElevatedButton(onPressed: (){},
+                  child: ElevatedButton(onPressed: (){
+
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BlueCheckIn()));
+                  },
                     style: const ButtonStyle(
 
 
@@ -50,14 +54,17 @@ class _CheckInState extends State<CheckIn> {
                   minWidth: 200.0,
                   height: 100.0,
                   //TODO
-                  child: ElevatedButton(onPressed: (){},
+                  child: ElevatedButton(onPressed: (){
+                    //TODO
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BlueCheckIn()));
+                  },
 
                     child: SizedBox(
                       width: 200,
                       height: 55,
                       child: Center(
                         child: const Text(
-                            "Member CheckIn CheckIn"
+                            "Member CheckIn "
                         ),
                       ),
                     ),
