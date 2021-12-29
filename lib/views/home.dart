@@ -5,6 +5,8 @@ import 'package:xsys/views/checkIn.dart';
 import 'package:xsys/views/log.dart';
 import 'package:xsys/views/profile.dart';
 
+import 'Schedule.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -105,48 +107,51 @@ class _HomeState extends State<Home> {
         ),
       ),
 
-  SizedBox(
-  width:160.0,
-  height: 160.0,
-  child: Card(
+  GestureDetector(
+    onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context)=> Schedule()));} ,
+    child: SizedBox(
+    width:160.0,
+    height: 160.0,
+    child: Card(
 
-    color: Colors.lightBlue[900],
-  elevation: 2.0,
-  shape: RoundedRectangleBorder(
-  borderRadius: BorderRadius.circular(8.0)
-  ),
-  child:Center(
-  child: Padding(
-  padding: const EdgeInsets.all(8.0),
-  child: Column(
-  children: <Widget>[
-  Image.asset("assets/schedule.png",width: 64.0,),
-  const SizedBox(
-  height: 10.0,
-  ),
-  const Text(
-  "Schedule",
-  style: TextStyle(
-  color: Colors.white,
-  fontWeight: FontWeight.bold,
-  fontSize: 20.0
-  ),
-  ),
-  const SizedBox(
-  height: 5.0,
-  ),
-  const Text(
-  "",
-  style: TextStyle(
-  color: Colors.white,
-  fontWeight: FontWeight.w100
-  ),
-  )
-  ],
-  ),
-  )
-  ),
-  ),
+      color: Colors.lightBlue[900],
+    elevation: 2.0,
+    shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(8.0)
+    ),
+    child:Center(
+    child: Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+    children: <Widget>[
+    Image.asset("assets/schedule.png",width: 64.0,),
+    const SizedBox(
+    height: 10.0,
+    ),
+    const Text(
+    "Schedule",
+    style: TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 20.0
+    ),
+    ),
+    const SizedBox(
+    height: 5.0,
+    ),
+    const Text(
+    "",
+    style: TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.w100
+    ),
+    )
+    ],
+    ),
+    )
+    ),
+    ),
+    ),
   ),
   ],
   ),
