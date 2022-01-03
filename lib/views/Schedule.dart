@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'profile.dart';
 
 class Schedule extends StatefulWidget {
   const Schedule({Key? key}) : super(key: key);
@@ -11,6 +10,54 @@ class Schedule extends StatefulWidget {
 
 class _ScheduleState extends State<Schedule> {
   @override
+  Widget scheduleItem(@required String Name,String Surname,String prem,@required String contacts,)
+  {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0,1,0,1),
+      child: Container(
+
+          decoration: BoxDecoration(
+
+            color: Colors.amberAccent,
+            border: Border.all( color: Colors.lightBlue,
+                width: 1),
+          ),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+
+
+          child:
+            Column(
+              children: [
+                Row(children:[
+                  Text("Date "), Text("13 Feb 2022"),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child:Container(
+                      child:Text("                      start:1800 End:0600") ,
+                    ),
+                  )
+                ],),
+                Row(children: [Text("Name:"),SizedBox(width: 2,) ,Text("Frank Majawala")]),
+
+                Align(
+                  alignment: Alignment.centerLeft,
+
+                    child: Text("Premises")),
+
+
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("1252 Chirikadzi Street, St Mary's, Chitungwiza"))
+
+              ],
+
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -31,8 +78,15 @@ class _ScheduleState extends State<Schedule> {
                       ),)
                 )
             ),
-            Text("hello"),
-            Text("hello"),
+
+
+          scheduleItem("Frank","Chinembiri","1252 Chrikadzi Street St Marys","0775611052"),
+            scheduleItem("Frank","Chinembiri","1252 Chrikadzi Street St Marys","0775611052"),
+            scheduleItem("Frank","Chinembiri","1252 Chrikadzi Street St Marys","0775611052"),
+            scheduleItem("Frank","Chinembiri","1252 Chrikadzi Street St Marys","0775611052"),
+            scheduleItem("Frank","Chinembiri","1252 Chrikadzi Street St Marys","0775611052"),
+            scheduleItem("Frank","Chinembiri","1252 Chrikadzi Street St Marys","0775611052"),
+            scheduleItem("Frank","Chinembiri","1252 Chrikadzi Street St Marys","0775611052"),
           ],),
           ),
 
@@ -40,3 +94,4 @@ class _ScheduleState extends State<Schedule> {
 
   }
 }
+

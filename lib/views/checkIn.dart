@@ -17,8 +17,12 @@ class _CheckInState extends State<CheckIn> {
 
       ),
           body:Center(
+
            child: Column(
               children: [
+                SizedBox(
+                  height: 15,
+                ),
                 Container(
                   child:Image.asset("assets/images.png",fit:BoxFit.fitHeight)
                 ),
