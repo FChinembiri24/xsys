@@ -4,6 +4,7 @@ import 'package:xsys/views/ProfileDetails.dart';
 import 'package:xsys/views/checkIn.dart';
 import 'package:xsys/views/log.dart';
 import 'package:xsys/views/profile.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'Schedule.dart';
 import 'news.dart';
@@ -58,6 +59,32 @@ drawer: Drawer(
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text("crime updates"),
+      ),
+      GestureDetector(
+        onTap: () async {
+          var whatsappUrl ="whatsapp://send?phone=263775611052";
+          if( await canLaunch(whatsappUrl)) {
+            launch(whatsappUrl);
+          }
+          else
+          {  SnackBar(
+            content: Text('Whatsapp is not detected'),
+
+          );
+          launch("smsto://263775611052");
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Contact us"),
+        ),
+      ),
+      GestureDetector(
+        onTap: ()=>launch("tel://911"),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Emergency call"),
+        ),
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
