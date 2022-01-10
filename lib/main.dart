@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:xsys/dashboard.dart';
 
@@ -25,7 +26,15 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.yellow,
       ),
-      home: const Login(),
+      home: FutureBuilder(
+
+        future: Firebase.initializeApp(),
+        builder: (context, snapshot) {
+    if (snapshot.hasError) {
+    return Container();}
+    else
+      return Login();
+        })
     );
   }
 }
