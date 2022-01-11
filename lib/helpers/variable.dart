@@ -1,6 +1,9 @@
 class Variabless {
   static bool loggedIn = true;
-  String ANIMATED_SPLASH = '/SplashScreen',
+  static String ANIMATED_SPLASH = '/SplashScreen',
       PROFILE = '/ProfilePage',
-      LOGIN_SCREEN = '/LoginScreen';
+      LOGIN_SCREEN = '/LoginScreen',
+      email='';
+
+
 }

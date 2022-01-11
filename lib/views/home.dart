@@ -108,7 +108,7 @@ drawer: Drawer(
     ( onTap: (){scaffoldKey.currentState!.openDrawer();},
       child: const Icon(Icons.menu, color: Colors.amberAccent,size: 52.0,)),
     GestureDetector(
-        onTap:(){ Navigator.push(context, MaterialPageRoute(builder:(context)=> Login()));},
+        onTap:(){ },
         child: Image.asset("assets/Logo.png",width: 64.0,)),
   GestureDetector(
       onTap:(){ Navigator.push(context, MaterialPageRoute(builder:(context)=> Profile()));} ,

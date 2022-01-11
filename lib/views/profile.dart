@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 bool editing= true;
 
 class Profile extends StatefulWidget {
@@ -11,7 +12,8 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-
+  //Todo
+String path="assets/profile.jpg";
 
 @override
 
@@ -52,12 +54,23 @@ class _ProfileState extends State<Profile> {
                                     editing=!editing;
                                   });
                                 },
-                                child: Image.asset("assets/profile.jpg",fit:BoxFit.cover,)),
+                                child: Image.asset(path,fit:BoxFit.cover,)),
                           ),
                         ),
       ),Container(      color:Colors.blueGrey[600],
                         width:360,
-                        child: IconButton(onPressed: (){}, icon:const Icon(Icons.camera_alt) ))
+                        child: IconButton(onPressed: ()async {
+                      ImagePicker img =ImagePicker();
+                    XFile? images;
+                    images =  await img.pickImage(source:ImageSource.camera);
+                    String? temp="";
+                   temp = images?.path.toString();
+                   path=temp!;
+                   setState(() {
+                     path=temp!;
+                   });
+
+                        }, icon:const Icon(Icons.camera_alt) ))
                   ],
                 ),
               ),

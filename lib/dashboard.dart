@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:xsys/helpers/variable.dart';
 import 'package:xsys/views/home.dart';
+import 'package:xsys/views/signIn.dart';
 
 import 'backend/auth.dart';
 
@@ -20,12 +22,18 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    String hint = "Client or Work ID";
+    String hint = "Email";
     String hint2 = "password";
 
 
     if (isLoading) {
-      return Container();
+      return Container(
+        child: Center(
+          child: (CircularProgressIndicator(
+            color: Colors.yellow,
+          )),
+        ),
+      );
     } else {
       return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -112,12 +120,19 @@ class _LoginState extends State<Login> {
                 height: 35,
               ),
               Center(
-                child: ElevatedButton(
-                  onPressed: signMeIn(),
-                  child: const Text("Login"),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.amberAccent),
+                child: GestureDetector(
+                  onTap: (){},
+                  child: Container(
+                    child: ElevatedButton(
+                      onPressed: (){
+                        logMeIn();
+                      },
+                      child: const Text("Login"),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.amberAccent),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -149,7 +164,7 @@ class _LoginState extends State<Login> {
     }
 
   }
-  signMeIn() {
+  logMeIn() {
 
     if(user.text.isNotEmpty){
 
@@ -167,7 +182,7 @@ class _LoginState extends State<Login> {
     }
   }
   signMeUp() {
-
+    Variabless.email =user.text;
     if(user.text.isNotEmpty){
 
       setState(() {
@@ -177,7 +192,7 @@ class _LoginState extends State<Login> {
       authMeths.signUpWithEmailP(user.text, pass.text).then((value) {
         if (value != null) {
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => Home()));
+              context, MaterialPageRoute(builder: (context) => SignInDetails()));
 
         }
       });
