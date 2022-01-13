@@ -9,6 +9,7 @@ class BlueCheckIn extends StatefulWidget {
 
 class _BlueCheckInState extends State<BlueCheckIn> {
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       body:SafeArea(

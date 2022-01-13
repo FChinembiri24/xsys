@@ -44,7 +44,9 @@ Details"""),
                           ),
                         ),Container(      color:Colors.blueGrey[600],
                             width:360,
-                            child: IconButton(onPressed: (){}, icon:const Icon(Icons.camera_alt) ))
+                            child: IconButton(onPressed: (){
+
+                            }, icon:const Icon(Icons.camera_alt) ))
                       ],
                     ),
                   ),
