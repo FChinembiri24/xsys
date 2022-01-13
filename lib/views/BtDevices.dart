@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
+import 'package:xsys/helpers/variable.dart';
 
 class BtDevices extends StatefulWidget {
   const BtDevices({Key? key}) : super(key: key);
@@ -32,7 +35,7 @@ class _BtDevicesState extends State<BtDevices> {
     if (!_isScanning) {
 
       scanResultList.clear();
-      flutterBlue.startScan(timeout: Duration(seconds: 4));
+      flutterBlue.startScan(timeout: Duration(seconds: 45));
 
       flutterBlue.scanResults.listen((results) {
         scanResultList = results;
@@ -81,9 +84,20 @@ class _BtDevicesState extends State<BtDevices> {
       backgroundColor: Colors.cyan,
     );
   }
-
+  sendTransparentData(String dataString) async {
+//Encoding the string
+    List<int> data = utf8.encode(dataString);
+    if (flutterBlue.state == BluetoothDeviceState.connected) {
+      await FlutterBlue.instance.connectedDevices.write(data);
+    }
+  }
   void onTap(ScanResult r) {
     print('${r.device.name}');
+    r.device.connect().then(() async {
+      Variabless user =Variabless();
+      sendTransparentData(user.user);
+
+    });
   }
 
 

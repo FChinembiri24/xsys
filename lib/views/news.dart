@@ -56,54 +56,60 @@ Widget newsArticle(
     preview = content.substring(0, 100);
   } else
     preview = content;
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          color: Colors.lightBlue,
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-
-                    width: 60,
-                    child: Image.asset(
-                      image,
-                      fit: BoxFit.cover,
+  return GestureDetector(
+    //todo
+    onTap: (){},
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            color: Colors.lightBlue,
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0))
+                      ),
+                      width: 60,
+                      child: Image.asset(
+                        image,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                Flexible(
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Text(
-                          title,
-                          style: TextStyle(fontSize: 25,
-                          color: Colors.yellow),
-                        ),
-                      ],
+                  Flexible(
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Text(
+                            title,
+                            style: TextStyle(fontSize: 25,
+                            color: Colors.yellow),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                preview,
-                style: TextStyle(
-                  color: Colors.white
-                ),
+                ],
               ),
-            )
-          ],
-        )),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  preview,
+                  style: TextStyle(
+                    color: Colors.white
+                  ),
+                ),
+              )
+            ],
+          )),
+    ),
   );
 }
 

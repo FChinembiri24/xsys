@@ -4,6 +4,6 @@ class Variabless {
       PROFILE = '/ProfilePage',
       LOGIN_SCREEN = '/LoginScreen',
       email='';
-
+String user ='';
 
 }

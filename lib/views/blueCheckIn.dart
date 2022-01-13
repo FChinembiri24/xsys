@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xsys/views/BtDevices.dart';
 
 class BlueCheckIn extends StatefulWidget {
   const BlueCheckIn({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class _BlueCheckInState extends State<BlueCheckIn> {
 
                 child: ElevatedButton(onPressed: (){
 
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BlueCheckIn()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BtDevices()));
                 },
                   style: const ButtonStyle(
 
