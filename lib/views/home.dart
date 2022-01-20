@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xsys/dashboard.dart';
 import 'package:xsys/views/ProfileDetails.dart';
 import 'package:xsys/views/checkIn.dart';
 import 'package:xsys/views/log.dart';

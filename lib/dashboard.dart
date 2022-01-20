@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:xsys/helpers/variable.dart';
 import 'package:xsys/views/home.dart';
@@ -165,7 +164,7 @@ class _LoginState extends State<Login> {
 
   }
   logMeIn() {
-
+    Variabless.email =user.text;
     if(user.text.isNotEmpty){
 
       setState(() {

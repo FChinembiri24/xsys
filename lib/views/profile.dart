@@ -1,7 +1,12 @@
 
 
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:xsys/backend/db.dart';
+import 'package:xsys/helpers/variable.dart';
 bool editing= true;
 
 class Profile extends StatefulWidget {
@@ -13,15 +18,57 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   //Todo
+  DbMethods dbMethods= DbMethods();
+  Variabless variabless=Variabless();
+  late QuerySnapshot searchSnapshot;
+  late QuerySnapshot imageUrl;
+  String name='';
+  String phone='';
+  String address='';
+  bool img=false;
+  String imgURL='';
+
+
+
+  initiateFind()async {
+    await dbMethods.getProfile(Variabless.email).then((val) {
+      setState(() {
+        searchSnapshot = val;
+        print("$searchSnapshot");
+        setState(() {
+
+        });
+      });
+    });
+
+  await dbMethods.getImage(Variabless.email).then((val){
+    imageUrl=val;
+    print("$imageUrl");
+    setState(() {
+
+    });
+  });
+  }
 String path="assets/profile.jpg";
 
-@override
+  setDetails() async
+  {
+    name=searchSnapshot.docs[0].get("name").toString();
+    phone=searchSnapshot.docs[0].get("phone").toString();
+    address=searchSnapshot.docs[0].get("address").toString();
+    img=true;//searchSnapshot.docs[0].get("img");
+
+    img? imgURL=imageUrl.docs[0].get("url"):'Hello';
+  }
 
   @override
   Widget build(BuildContext context) {
+  initiateFind();
+  setDetails();
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile"),
+        title:  Text('profile'),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -54,7 +101,7 @@ String path="assets/profile.jpg";
                                     editing=!editing;
                                   });
                                 },
-                                child: Image.asset(path,fit:BoxFit.cover,)),
+                                child:img? Image.network(imgURL):Image.asset(path,fit:BoxFit.cover,)),
                           ),
                         ),
       ),Container(      color:Colors.blueGrey[600],
@@ -62,9 +109,10 @@ String path="assets/profile.jpg";
                         child: IconButton(onPressed: ()async {
                       ImagePicker img =ImagePicker();
                     XFile? images;
-                    images =  await img.pickImage(source:ImageSource.camera);
+
+                    images =  await img.pickImage(source:ImageSource.gallery);
                     String? temp="";
-                   temp = images?.path.toString();
+                   temp = dbMethods.saveImage(File(images!.path),Variabless.email);
                    path=temp!;
                    setState(() {
                      path=temp!;
@@ -77,7 +125,7 @@ String path="assets/profile.jpg";
       const Padding(
           padding: EdgeInsets.all(18.0),//Todo
           child: Text(
-            "User ID: \nX-CL11223344",
+            "User ID: \n",
             style: TextStyle(
                 color: Colors.amberAccent,
                 fontSize: 28.0,
@@ -115,8 +163,9 @@ String path="assets/profile.jpg";
                               const SizedBox(
                                 height: 10.0,
                               ),
-                            editing?  const Text(
-                                "Frank Chinembiri ",
+                            editing?
+                            Text(
+                                name,
                                 style: TextStyle(
                                     color: Colors.amberAccent,
                                     fontWeight: FontWeight.bold,
@@ -180,13 +229,14 @@ String path="assets/profile.jpg";
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              editing?const Text(
-                                "fchinembiri24@gmail.com",
+                              editing? Text(
+                                Variabless.email,
                                 style: TextStyle(
                                     color: Colors.amberAccent,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0
                                 ),
+
                               ):TextField(
                                 style: const TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
@@ -245,8 +295,8 @@ String path="assets/profile.jpg";
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              editing?const Text(
-                                "+263775611052",
+                              editing? Text(
+                                phone,
                                 style: TextStyle(
                                     color: Colors.amberAccent,
                                     fontWeight: FontWeight.bold,
@@ -311,12 +361,14 @@ String path="assets/profile.jpg";
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              editing?const Text(
-                                "123 street name, Karigamombe ,\n Harare",
-                                style: TextStyle(
-                                    color: Colors.amberAccent,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20.0
+                              editing? Flexible(
+                                child: Text(
+                                  address,
+                                  style: TextStyle(
+                                      color: Colors.amberAccent,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20.0
+                                  ),
                                 ),
                               ):TextField(
                                 style: const TextStyle(color: Colors.black),

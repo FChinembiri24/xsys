@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:xsys/backend/db.dart';
 import 'package:xsys/helpers/variable.dart';
 import 'package:xsys/views/home.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
 class SignInDetails extends StatefulWidget {
   const SignInDetails({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class _SignInDetailsState extends State<SignInDetails> {
   String hint2="phone Number";
   String hint3="address";
   String hint4="services";
+  var number;
   TextEditingController user =new TextEditingController();
   TextEditingController name =new TextEditingController();
   TextEditingController phoneNumber =new TextEditingController();
@@ -69,8 +71,7 @@ class _SignInDetailsState extends State<SignInDetails> {
                   fillColor: Colors.white,
                   filled: true,
                   hintText: hint1,
-                  contentPadding:
-                  const EdgeInsets.only(left: 14, bottom: 8, top: 8),
+
                   enabledBorder: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(30.8),
                       borderSide: const BorderSide(color: Colors.white10)),
@@ -82,16 +83,23 @@ class _SignInDetailsState extends State<SignInDetails> {
             const SizedBox(
               height: 30,
             ),
-            TextFormField(
-              controller: phoneNumber,
-
+            IntlPhoneField(
+            // controller: phoneNumber,
+              onChanged: (phone) {
+                print(phone.completeNumber);
+                number=phone.completeNumber;
+              },
+              onCountryChanged: (country) {
+                print('Country changed to: ' + country.name);
+              },
+              initialCountryCode: 'ZW',
               style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
                   hintText: hint2,
                   contentPadding:
-                  const EdgeInsets.only(left: 14, bottom: 8, top: 8),
+                  const EdgeInsets.only(left: 18, bottom: 0 ,top: 13),
                   enabledBorder: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(30.8),
                       borderSide: const BorderSide(color: Colors.white10)),
@@ -152,11 +160,12 @@ class _SignInDetailsState extends State<SignInDetails> {
                   child: ElevatedButton(
                     onPressed: ()async{
                       DbMethods dbMethods=DbMethods();
-                     await dbMethods.saveUser(user.text, name.text,Variabless.email, phoneNumber.text, address.text, services.text);
+
+                     await dbMethods.saveUser(user.text, name.text,Variabless.email, number.text, address.text, services.text,false);
                       Navigator.pushReplacement(
                           context, MaterialPageRoute(builder: (context) => Home()));
                     },
-                    child: const Text("Login"),
+                    child: const Text("signUp"),
                     style: ButtonStyle(
                       backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.amberAccent),
