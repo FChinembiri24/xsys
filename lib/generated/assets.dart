@@ -17,5 +17,6 @@ class Assets {
   static const String assetsSchedule = 'assets/schedule.png';
   static const String assetsSchedule2 = 'assets/schedule2.png';
   static const String xsysAssetsBLUE = 'assets/BLUE.png';
+  static const String xsysAssetsProfile = 'assets/profile.psd';
 
 }

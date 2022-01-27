@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xsys/dashboard.dart';
 import 'package:xsys/views/ProfileDetails.dart';
 import 'package:xsys/views/checkIn.dart';
 import 'package:xsys/views/log.dart';
@@ -60,6 +61,16 @@ drawer: Drawer(
         child: Text("crime updates"),
       ),
       GestureDetector(
+        onTap:(){
+          //todo call rapid response
+          launch("tel://+263775611052");
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("X-SYS Rapid response"),
+        ),
+      ),
+      GestureDetector(
         onTap: () async {
           var whatsappUrl ="whatsapp://send?phone=263775611052";
           if( await canLaunch(whatsappUrl)) {
@@ -85,9 +96,12 @@ drawer: Drawer(
           child: Text("Emergency call"),
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text("Log out"),
+      GestureDetector(
+        onTap:()=>Navigator.push(context, MaterialPageRoute(builder:(context)=> Login())),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Log out"),
+        ),
       ),
 
     ],

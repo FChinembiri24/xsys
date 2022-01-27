@@ -1,13 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget vMain() {
+Widget vMain( BuildContext context) {
   return Scaffold(
     appBar: AppBar(
       title: const Text("Vehicle registry"),
     ),
     floatingActionButton: FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+
+        showDialog(context: context, builder: (BuildContext context){
+          return AlertDialog(
+            content: Stack(
+
+            ),
+          );
+        });
+      },
       tooltip: 'Increment',
       child: const Icon(Icons.add),
     ),
@@ -16,6 +25,11 @@ Widget vMain() {
       padding: const EdgeInsets.all(1),
       child: Column(
         children: [
+          Container(child: ListView(
+            children: [
+
+            ],
+          )),
           Container(
             color: Colors.lightBlue[900],
             child: Padding(

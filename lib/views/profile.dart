@@ -49,7 +49,7 @@ class _ProfileState extends State<Profile> {
     });
   });
   }
-String path="assets/profile.jpg";
+String path="assets/profile1.png";
 
   setDetails() async
   {

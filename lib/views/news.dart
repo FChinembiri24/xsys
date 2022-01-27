@@ -117,6 +117,7 @@ class _NewsState extends State<News> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      backgroundColor: Colors.amberAccent,
       appBar: AppBar(
         title: Container(
           child: Text(
@@ -179,7 +180,7 @@ class _NewsState extends State<News> {
                   "Crime rate increases in harare",
                   "Recent reports show that the rate of crime being committed in Harare has increased significantly",
                   12,
-                  "Daily mail",
+                  "News Daily",
                   "assets/profile.jpg"),
               newsArticle(
                   "Crime rate increases in harare",

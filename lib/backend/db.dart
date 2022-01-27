@@ -8,7 +8,7 @@ import 'package:xsys/helpers/variable.dart';
 
 class DbMethods
 {
-  saveUser(String userID,String name, String email, var phoneNumber,String address ,String services,bool img) async
+   saveUser(String userID,String name, String email, var phoneNumber,String address ,String services,bool img) async
   {
     Map<String,dynamic> userMap=
     {
@@ -21,12 +21,12 @@ class DbMethods
 
     };
 
-    await saveServices(email, services);
+    saveServices(email, services);
     return await FirebaseFirestore.instance.collection("profile").doc(email).set(userMap);
 
   }
 
-  saveServices(String userId,String Services) async{
+  static saveServices(String userId,String Services) async{
 
     Map<String,String> services=
         {

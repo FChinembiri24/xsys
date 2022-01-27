@@ -33,7 +33,8 @@ class _LoginState extends State<Login> {
           )),
         ),
       );
-    } else {
+    }
+    else {
       return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -91,7 +92,7 @@ class _LoginState extends State<Login> {
                 validator: (val){
                   String  pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
                   RegExp regExp = new RegExp(pattern);
-                  return regExp.hasMatch(val!)?"":"must contain digit,caps and special characxter";
+                  return regExp.hasMatch(val!)?"":"must contain digit,caps and special character";
                 },
                 style: const TextStyle(color: Colors.black),
                 decoration: InputDecoration(
@@ -113,7 +114,7 @@ class _LoginState extends State<Login> {
                 child: Container(
                     padding:
                     EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Text("forgot password?", style: TextStyle(color: Colors.black))),
+                    child: Text("Forgot password?", style: TextStyle(color: Colors.black))),
               ),
               const SizedBox(
                 height: 35,
