@@ -108,99 +108,198 @@ drawer: Drawer(
   ),
 ),
   body: SafeArea(
-  child: Column(
+  child: SingleChildScrollView(
+    child: Column(
 
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: <Widget>[
-  Padding(
-  padding: const EdgeInsets.all(12.0),
-  child: Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  children: <Widget>[
-  GestureDetector
-    ( onTap: (){scaffoldKey.currentState!.openDrawer();},
-      child: const Icon(Icons.menu, color: Colors.amberAccent,size: 52.0,)),
-    GestureDetector(
-        onTap:(){ },
-        child: Image.asset("assets/Logo.png",width: 64.0,)),
-  GestureDetector(
-      onTap:(){ Navigator.push(context, MaterialPageRoute(builder:(context)=> Profile()));} ,
-      child: Image.asset("assets/profile1.png",width: 52.0,)
-  ),
-  ],
-  ),
-  ),
-  const Padding(
-  padding: EdgeInsets.all(18.0),//Todo
-  child: Text(
-  "Welcome \nSelect an option",
-  style: TextStyle(
-  color: Colors.white,
-  fontSize: 28.0,
-  fontWeight: FontWeight.bold
-  ),
-  textAlign: TextAlign.start,
-  ),
-  ),
-  Padding(
-  padding: const EdgeInsets.all(12.0),
-  child: Center(
-  child: Wrap(
-  spacing:20,
-  runSpacing: 20.0,
-  children: <Widget>[
-  Row(
-    children: [
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+    Padding(
+    padding: const EdgeInsets.all(12.0),
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+    GestureDetector
+      ( onTap: (){scaffoldKey.currentState!.openDrawer();},
+        child: const Icon(Icons.menu, color: Colors.amberAccent,size: 52.0,)),
       GestureDetector(
-        onTap:(){Navigator.push(context, MaterialPageRoute(builder:(context)=> CheckIn()));},
-        child: SizedBox(
-        width:160.0,
-        height: 160.0,
-        child: Card(
+          onTap:(){ },
+          child: Image.asset("assets/Logo.png",width: 64.0,)),
+    GestureDetector(
+        onTap:(){ Navigator.push(context, MaterialPageRoute(builder:(context)=> Profile()));} ,
+        child: Image.asset("assets/profile1.png",width: 52.0,)
+    ),
+    ],
+    ),
+    ),
+    const Padding(
+    padding: EdgeInsets.all(18.0),//Todo
+    child: Text(
+    "Welcome \nSelect an option",
+    style: TextStyle(
+    color: Colors.white,
+    fontSize: 28.0,
+    fontWeight: FontWeight.bold
+    ),
+    textAlign: TextAlign.start,
+    ),
+    ),
+    Padding(
+    padding: const EdgeInsets.all(12.0),
+    child: Center(
+    child: Wrap(
+    spacing:20,
+    runSpacing: 20.0,
+    children: <Widget>[
+    Row(
+      children: [
+        GestureDetector(
+          onTap:(){Navigator.push(context, MaterialPageRoute(builder:(context)=> CheckIn()));},
+          child: SizedBox(
+          width:160.0,
+          height: 160.0,
+          child: Card(
 
-          color: Colors.lightBlue[900],
-        elevation: 2.0,
-        shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0)
+            color: Colors.lightBlue[900],
+          elevation: 2.0,
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0)
+          ),
+          child:Center(
+          child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+          children: <Widget>[
+          Image.asset("assets/checkIn.png",width: 64.0,),
+          const SizedBox(
+          height: 10.0,
+          ),
+          const Text(
+          "Check In",
+          style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 20.0
+          ),
+          ),
+          const SizedBox(
+          height: 5.0,
+          ),
+          const Text(
+          "",
+          style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w100
+          ),
+          )
+          ],
+          ),
+          )
+          ),
+          ),
+          ),
         ),
-        child:Center(
-        child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-        children: <Widget>[
-        Image.asset("assets/checkIn.png",width: 64.0,),
-        const SizedBox(
-        height: 10.0,
-        ),
-        const Text(
-        "Check In",
-        style: TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-        fontSize: 20.0
-        ),
-        ),
-        const SizedBox(
-        height: 5.0,
-        ),
-        const Text(
-        "",
-        style: TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.w100
-        ),
-        )
-        ],
-        ),
-        )
-        ),
-        ),
-        ),
+
+    GestureDetector(
+      onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context)=> Schedule()));} ,
+      child: SizedBox(
+      width:160.0,
+      height: 160.0,
+      child: Card(
+
+        color: Colors.lightBlue[900],
+      elevation: 2.0,
+      shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8.0)
       ),
+      child:Center(
+      child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+      children: <Widget>[
+      Image.asset("assets/schedule.png",width: 64.0,),
+      const SizedBox(
+      height: 10.0,
+      ),
+      const Text(
+      "Schedule",
+      style: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+      fontSize: 20.0
+      ),
+      ),
+      const SizedBox(
+      height: 5.0,
+      ),
+      const Text(
+      "",
+      style: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w100
+      ),
+      )
+      ],
+      ),
+      )
+      ),
+      ),
+      ),
+    ),
+    ],
+    ),
+    Row(
+      children: [
+        GestureDetector(
+          onTap:(){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> Logs()));
+          }
+          ,
+          child: SizedBox(
+          width:160.0,
+          height: 160.0,
+          child: Card(
 
-  GestureDetector(
-    onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context)=> Schedule()));} ,
-    child: SizedBox(
+            color: Colors.lightBlue[900],
+          elevation: 2.0,
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0)
+          ),
+          child:Center(
+          child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+          children: <Widget>[
+          Image.asset("assets/logs.png",width: 64.0,),
+          const SizedBox(
+          height: 10.0,
+          ),
+          const Text(
+          "Logs",
+          style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 20.0
+          ),
+          ),
+          const SizedBox(
+          height: 5.0,
+          ),
+          const Text(
+          "4 Items",
+          style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w100
+          ),
+          )
+          ],
+          ),
+          )
+          ),
+          ),
+          ),
+        ),
+
+    SizedBox(
     width:160.0,
     height: 160.0,
     child: Card(
@@ -215,12 +314,12 @@ drawer: Drawer(
     padding: const EdgeInsets.all(8.0),
     child: Column(
     children: <Widget>[
-    Image.asset("assets/schedule.png",width: 64.0,),
+    Image.asset("assets/notify.png",width: 64.0,),
     const SizedBox(
     height: 10.0,
     ),
     const Text(
-    "Schedule",
+    "Notifications",
     style: TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.bold,
@@ -231,7 +330,7 @@ drawer: Drawer(
     height: 5.0,
     ),
     const Text(
-    "",
+    "6 Items",
     style: TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.w100
@@ -243,159 +342,62 @@ drawer: Drawer(
     ),
     ),
     ),
-  ),
-  ],
-  ),
-  Row(
-    children: [
-      GestureDetector(
-        onTap:(){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> Logs()));
-        }
-        ,
-        child: SizedBox(
-        width:160.0,
-        height: 160.0,
-        child: Card(
-
-          color: Colors.lightBlue[900],
-        elevation: 2.0,
-        shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0)
-        ),
-        child:Center(
-        child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-        children: <Widget>[
-        Image.asset("assets/logs.png",width: 64.0,),
-        const SizedBox(
-        height: 10.0,
-        ),
-        const Text(
-        "Logs",
-        style: TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-        fontSize: 20.0
-        ),
-        ),
-        const SizedBox(
-        height: 5.0,
-        ),
-        const Text(
-        "4 Items",
-        style: TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.w100
-        ),
-        )
-        ],
-        ),
-        )
-        ),
-        ),
-        ),
-      ),
-
-  SizedBox(
-  width:160.0,
-  height: 160.0,
-  child: Card(
-
-    color: Colors.lightBlue[900],
-  elevation: 2.0,
-  shape: RoundedRectangleBorder(
-  borderRadius: BorderRadius.circular(8.0)
-  ),
-  child:Center(
-  child: Padding(
-  padding: const EdgeInsets.all(8.0),
-  child: Column(
-  children: <Widget>[
-  Image.asset("assets/notify.png",width: 64.0,),
-  const SizedBox(
-  height: 10.0,
-  ),
-  const Text(
-  "Notifications",
-  style: TextStyle(
-  color: Colors.white,
-  fontWeight: FontWeight.bold,
-  fontSize: 20.0
-  ),
-  ),
-  const SizedBox(
-  height: 5.0,
-  ),
-  const Text(
-  "6 Items",
-  style: TextStyle(
-  color: Colors.white,
-  fontWeight: FontWeight.w100
-  ),
-  )
-  ],
-  ),
-  )
-  ),
-  ),
-  ),
-  ],
-  ),
-    GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> GDetails()));
-      },
-      child: SizedBox(
-        width:320.0,
-        height: 160.0,
-        child: Card(
-
-          color: Colors.amberAccent,
-          elevation: 2.0,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0)
-          ),
-          child:Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: <Widget>[
-                    Image.asset("assets/Details1.png",width: 64.0,),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    const Text(
-                      "Guard Details",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5.0,
-                    ),
-                    const Text(
-                      "",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w100
-                      ),
-                    )
-                  ],
-                ),
-              )
-          ),
-        ),
-      ),
+    ],
     ),
-  ],
-  ),
-  ),
-  )
-  ],
+      GestureDetector(
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> GDetails()));
+        },
+        child: SizedBox(
+          width:320.0,
+          height: 160.0,
+          child: Card(
+
+            color: Colors.amberAccent,
+            elevation: 2.0,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0)
+            ),
+            child:Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset("assets/Details1.png",width: 64.0,),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      const Text(
+                        "Guard Details",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5.0,
+                      ),
+                      const Text(
+                        "",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w100
+                        ),
+                      )
+                    ],
+                  ),
+                )
+            ),
+          ),
+        ),
+      ),
+    ],
+    ),
+    ),
+    )
+    ],
+    ),
   )
   )
   );

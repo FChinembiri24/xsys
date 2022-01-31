@@ -27,6 +27,7 @@ class _ProfileState extends State<Profile> {
   String address='';
   bool img=false;
   String imgURL='';
+  String uuid="";
 
 
 
@@ -56,8 +57,8 @@ String path="assets/profile1.png";
     name=searchSnapshot.docs[0].get("name").toString();
     phone=searchSnapshot.docs[0].get("phone").toString();
     address=searchSnapshot.docs[0].get("address").toString();
-    img=true;//searchSnapshot.docs[0].get("img");
-
+    img=searchSnapshot.docs[0].get("img");
+    uuid=searchSnapshot.docs[0].get("userId");
     img? imgURL=imageUrl.docs[0].get("url"):'Hello';
   }
 
@@ -104,28 +105,52 @@ String path="assets/profile1.png";
                                 child:img? Image.network(imgURL):Image.asset(path,fit:BoxFit.cover,)),
                           ),
                         ),
-      ),Container(      color:Colors.blueGrey[600],
-                        width:360,
-                        child: IconButton(onPressed: ()async {
-                      ImagePicker img =ImagePicker();
-                    XFile? images;
+      ),Center(
+        child: Container(      color:Colors.blueGrey[600],
+                          width:360,
+                          child: Center(
+                            child: Row(
+                              children: [
+                                IconButton(onPressed: ()async {
+                        ImagePicker img =ImagePicker();
+                      XFile? images;
 
-                    images =  await img.pickImage(source:ImageSource.gallery);
-                    String? temp="";
-                   temp = dbMethods.saveImage(File(images!.path),Variabless.email);
-                   path=temp!;
-                   setState(() {
+                      images =  await img.pickImage(source:ImageSource.camera);
+                      String? temp="";
+                     temp = dbMethods.saveImage(File(images!.path),Variabless.email);
                      path=temp!;
-                   });
+                     setState(() {
+                       path=temp!;
+                     });
 
-                        }, icon:const Icon(Icons.camera_alt) ))
+                                }, icon:const Icon(Icons.camera_alt) ),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width-106,
+                                ),
+                                IconButton(onPressed: ()async {
+                                  ImagePicker img =ImagePicker();
+                                  XFile? images;
+
+                                  images =  await img.pickImage(source:ImageSource.gallery);
+                                  String? temp="";
+                                  temp = dbMethods.saveImage(File(images!.path),Variabless.email);
+                                  path=temp!;
+                                  setState(() {
+                                    path=temp!;
+                                  });
+
+                                }, icon:const Icon(Icons.panorama) )
+                              ],
+                            ),
+                          )),
+      )
                   ],
                 ),
               ),
-      const Padding(
+       Padding(
           padding: EdgeInsets.all(18.0),//Todo
           child: Text(
-            "User ID: \n",
+            "User ID: \n"+uuid,
             style: TextStyle(
                 color: Colors.amberAccent,
                 fontSize: 28.0,

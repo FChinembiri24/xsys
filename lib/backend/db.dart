@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:xsys/helpers/variable.dart';
 
 
@@ -18,10 +19,11 @@ class DbMethods
       'phone':phoneNumber,
       'address':address,
       'img':img,
+      'user':true,
 
     };
 
-    saveServices(email, services);
+    //saveServices(email, services);
     return await FirebaseFirestore.instance.collection("profile").doc(email).set(userMap);
 
   }
@@ -33,7 +35,7 @@ class DbMethods
           'userId':userId,
           'services':Services
         };
-    return await FirebaseFirestore.instance.collection("Services").doc(Variabless.email).set(services);
+    return await FirebaseFirestore.instance.collection("Services").add(services);
   }
 
   saveMac(String user) async
@@ -92,4 +94,27 @@ getImg(String email) async{
 modify(String abc)async{
     return await FirebaseFirestore.instance.collection("pimgs").doc();
 }
+
+retrieveSchedule(String email) async
+{
+  return await FirebaseFirestore.instance
+      .collection("schedule")
+  //  .doc("owOxaK5cz8gOfB6AGbkG")
+      .where("email", isEqualTo: email)
+      .snapshots()
+      ;
+
+}
+
+
+saveLocation(Position position) async
+{
+  Map<String,dynamic> posMap={
+    'email':Variabless.email,
+    'location':position
+
+  };
+ return await FirebaseFirestore.instance.collection("Locations").add(posMap);
+}
+
 }

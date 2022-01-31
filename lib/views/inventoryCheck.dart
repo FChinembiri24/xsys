@@ -11,6 +11,14 @@ class _InventoryCheckState extends State<InventoryCheck> {
   @override
   Widget build(BuildContext context) {
 
-    return Container();
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+
+          ),
+        ),
+      ),
+    );
   }
 }

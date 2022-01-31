@@ -64,7 +64,7 @@ int page=2;
   // Update the state of the app
   // ...
   // Then close the drawer
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> vMain()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> vMain(context)));
   },
 
   ),

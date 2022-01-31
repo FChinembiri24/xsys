@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:xsys/backend/DbSql.dart';
+import 'package:xsys/backend/Location%20.dart';
 import 'package:xsys/backend/db.dart';
 import 'package:xsys/helpers/variable.dart';
 import 'package:xsys/views/home.dart';
@@ -215,6 +217,9 @@ class _SignInDetailsState extends State<SignInDetails> {
                       setState(() {
                         isLoading=true;
                       });
+                      DbSql  dbSql=DbSql();
+                      var conn=dbSql.mySqlConnect().toString();
+                      print(conn);
                       DbMethods dbMethods=DbMethods();
                     await dbMethods.saveUser(user.text, name.text,Variabless.email, number.text, address.text, services.text,false).then(
                           (){
@@ -222,13 +227,45 @@ class _SignInDetailsState extends State<SignInDetails> {
                                 context, MaterialPageRoute(builder: (context) => Home()));
                           }
                       );
-                          (){
+
                         Navigator.pushReplacement(
                             context, MaterialPageRoute(builder: (context) => Home()));
-                      };
+
 
                     },
                     child: const Text("signUp"),
+                    style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.amberAccent),
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  child: ElevatedButton(
+                    onPressed: ()async{
+                      setState(() {
+                        isLoading=true;
+                      });
+                      DbSql  dbSql=DbSql();
+                      var conn=dbSql.mySqlConnect().toString();
+                      print(conn);
+                      DbMethods dbMethods=DbMethods();
+                      Position postion =await Locator.determinePosition();
+                      await dbMethods.saveLocation(postion).then(
+                              (){
+                            Navigator.pushReplacement(
+                                context, MaterialPageRoute(builder: (context) => Home()));
+                          }
+                      );
+
+                      Navigator.pushReplacement(
+                          context, MaterialPageRoute(builder: (context) => Home()));
+
+
+                    },
+                    child: const Text("Get premise location"),
                     style: ButtonStyle(
                       backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.amberAccent),
