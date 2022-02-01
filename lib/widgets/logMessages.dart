@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ChatMessage{
   String messageContent;
@@ -12,3 +13,6 @@ List<ChatMessage> messages = [
   ChatMessage(messageContent: "blue Sedan license plate ZJK 1023 parked outside gate at 3 am I had to chase them away there 4 people in the vehicle all males .", messageType: "receiver"),
   ChatMessage(messageContent: "full moon todsy no activity", messageType: "receiver"),
 ];
+TextStyle wordStyle() {
+  return TextStyle(color: Colors.white);
+}

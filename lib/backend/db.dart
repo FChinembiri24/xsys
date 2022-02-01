@@ -116,5 +116,13 @@ saveLocation(Position position) async
   };
  return await FirebaseFirestore.instance.collection("Locations").add(posMap);
 }
-
+   createChatroom(String chatRoomId, chatroomMap) {
+     FirebaseFirestore.instance
+         .collection("Chatroom")
+         .doc(chatRoomId)
+         .set(chatroomMap)
+         .catchError((e) {
+       print(e.toString);
+     });
+   }
 }

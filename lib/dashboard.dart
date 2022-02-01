@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xsys/helpers/HelperFunctions.dart';
 import 'package:xsys/helpers/variable.dart';
 import 'package:xsys/views/home.dart';
 import 'package:xsys/views/signIn.dart';
@@ -126,6 +127,7 @@ class _LoginState extends State<Login> {
                     child: ElevatedButton(
                       onPressed: (){
                         logMeIn();
+
                       },
                       child: const Text("Login"),
                       style: ButtonStyle(
@@ -171,7 +173,8 @@ class _LoginState extends State<Login> {
       setState(() {
         isLoading = true;
       });
-
+    HelperFunctions.saveUserEmailSharedPreference(Variabless.email);
+    HelperFunctions.saveUserLoggedInSharedPreference(true);
       authMeths.signInWithEmail(user.text, pass.text).then((value) {
         if (value != null) {
           Navigator.pushReplacement(

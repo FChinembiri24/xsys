@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:xsys/dashboard.dart';
+import 'package:xsys/helpers/HelperFunctions.dart';
+import 'package:xsys/helpers/variable.dart';
+import 'package:xsys/views/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Variabless.loggedIn!= HelperFunctions.getUserLoggedInSharedPreference();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -26,13 +30,22 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.yellow,
       ),
+
       home: FutureBuilder(
 
         future: Firebase.initializeApp(),
         builder: (context, snapshot) {
-    if (snapshot.hasError) {
+    if (snapshot.hasError&& !snapshot.hasData) {
     return Container();}
     else
+      if(Variabless.loggedIn)
+        {
+         Variabless.email!= HelperFunctions.getUserEmailSharedPreference();
+          return Home();
+
+
+        }
+      else
       return Login();
         })
     );

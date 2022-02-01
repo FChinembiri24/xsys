@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xsys/dashboard.dart';
+import 'package:xsys/helpers/HelperFunctions.dart';
 import 'package:xsys/views/ProfileDetails.dart';
 import 'package:xsys/views/checkIn.dart';
 import 'package:xsys/views/log.dart';
@@ -17,9 +18,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+
   return Scaffold(
     key: scaffoldKey,
 
@@ -97,7 +100,10 @@ drawer: Drawer(
         ),
       ),
       GestureDetector(
-        onTap:()=>Navigator.push(context, MaterialPageRoute(builder:(context)=> Login())),
+        onTap:(){
+          HelperFunctions.saveUserLoggedInSharedPreference(false);
+          Navigator.push(context, MaterialPageRoute(builder:(context)=> Login()))
+    ;},
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text("Log out"),
@@ -285,7 +291,7 @@ drawer: Drawer(
           height: 5.0,
           ),
           const Text(
-          "4 Items",
+          "",
           style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w100
@@ -330,7 +336,7 @@ drawer: Drawer(
     height: 5.0,
     ),
     const Text(
-    "6 Items",
+    "",
     style: TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.w100

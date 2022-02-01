@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:xsys/backend/db.dart';
+import 'package:xsys/helpers/variable.dart';
 import 'package:xsys/views/details.dart';
 import 'package:xsys/views/vehicleRegistry.dart';
 import 'package:xsys/widgets/Vmain.dart';
@@ -32,7 +34,7 @@ int page=2;
   return Scaffold(
   appBar: AppBar(title:const Text("Logs")),
   body:   (page==2)?
-    const Details():(page==1)?const VehicleRegistry():const Inventory(),
+     MeetingRoom(Variabless.email):(page==1)?const VehicleRegistry():const Inventory(),
   drawer: Drawer(
   // Add a ListView to the drawer. This ensures the user can scroll
   // through the options in the drawer if there isn't enough vertical
@@ -71,10 +73,10 @@ int page=2;
     ListTile(
       title: const Text('Observations'),
       onTap: () {
-        // Update the state of the app
-        // ...
+
+
         // Then close the drawer
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> const Details()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>  MeetingRoom(Variabless.email)));
       },
 
     ),
@@ -83,5 +85,17 @@ int page=2;
   ),
   );
   }
+chatroomStart(String username) {
+  List<String> users = [username, Variabless.email];
+  String chatRoomId = Variabless.email;
+  Map<String, dynamic> chatroomMap = {
+    "users": users,
+    "chatRoomId": chatRoomId,
+  };
+  DbMethods dbMeths=new DbMethods();
+  dbMeths.createChatroom(chatRoomId, chatroomMap);
+  Navigator.pushReplacement(context,
+      MaterialPageRoute(builder: (context) => MeetingRoom(chatRoomId)));
+}
   }
 
